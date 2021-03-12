@@ -22,7 +22,7 @@ namespace WeCommerce.Controllers
             _context = context;
             _hostEnvironment = hostEnvironment;
         }
-
+       
         // GET: Products
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Index()
