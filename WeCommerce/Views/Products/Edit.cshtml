@@ -2,14 +2,22 @@
 
 @{
     ViewData["Title"] = "Edit";
-}
+    Layout = "_LayoutOtros";
 
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <h1>Edit</h1>
 
 <h4>Product</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
+        @{ 
+            if (User.IsInRole("Admin"))
+            {
+                <a>hola</a>
+            }
+        }
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -38,11 +46,14 @@
                 <input asp-for="CategoryId" class="form-control" />
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ImageName" class="control-label"></label>
-                <input asp-for="ImageName" class="form-control" />
+                <input asp-for="ImageName" type="file" id="i_file" value="" class="form-control" />
                 <span asp-validation-for="ImageName" class="text-danger"></span>
+
             </div>
+            <img src="@("/Files/Img/Product/"+Model.ImageName)" asp-append-version="true" id="_img" width="150" height="150" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -56,4 +67,14 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
 }
+<script>
+    $('#i_file').change(function (event) {
+        var tmppath = URL.createObjectURL(event.target.files[0]);
+        $("#_img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+
+        $("#disp_tmp_path").html("Temporary Path(Copy it and try pasting it in browser address bar) --> <strong>[" + tmppath + "]</strong>");
+    });
+</script>

@@ -1,6 +1,6 @@
 ﻿.carousel-item {
-    height: 100vh;
-    min-height: 300px;
+    height: 100px;
+    width:100px;
 }
 
 .carousel-caption {

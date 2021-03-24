@@ -27,9 +27,22 @@ namespace WeCommerce.Controllers
         }
 
         // GET: ProductosVistaController1/Details/5
-        public ActionResult Details(int id)
+
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Product
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
         }
 
         // GET: ProductosVistaController1/Create

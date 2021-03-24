@@ -22,37 +22,8 @@
 </head>
 
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light  " style="background-color:black">
-        <div class="container" style="margin:0px">
-            <div>
-                <img src="https://www.flaticon.com/premium-icon/icons/svg/3624/3624762.svg" width="50" height="50" style="margin-right:10px" alt="">
-                <a class="navbar-brand" style="color:aqua" asp-controller="Home" asp-action="Index">Wecommerce</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="align-items:end;margin-left:100px">
-
-                <ul class="navbar-nav flex-grow-1" style="margin-left:50px">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a class="nav-link text-light" asp-area="" asp-controller="Categories" asp-action="Index">Categorias</a>
-                        }
-
-                    </li>
-                </ul>
-
-            </div>
-
-        </div>
-        <partial name="_LoginPartial" />
-    </nav>
+<body class="body">
+   
     <div>
         <div class="container px-4 py-5 mx-auto">
 

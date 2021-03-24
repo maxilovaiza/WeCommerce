@@ -1,47 +1,43 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+<link href="~/css/navupper.css" rel="stylesheet" />
 
-<ul class="navbar-nav" style="margin-left:100px">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <li class="nav-item">
-            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">!Hola @User.Identity.Name!</a>
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="standard_dropdown main_nav_dropdown ">
+        <li class="">
+           <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> !Hola @User.Identity.Name!</a>
+            <ul>
+                <li class="nav-item">
+                    <form class="form-inline " asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark"> <i class="fas fa-sign-out-alt"></i>Logout</button>
+                    </form>
+                </li>
+            </ul>
         </li>
-        <li>
-            <hr />
-        </li>
-        <li class="nav-item">
-            <form class="form-inline " asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-light"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoJPGc+CgkJPHBhdGggZD0iTTI1NS4xNSw0NjguNjI1SDYzLjc4N2MtMTEuNzM3LDAtMjEuMjYyLTkuNTI2LTIxLjI2Mi0yMS4yNjJWNjQuNjM4YzAtMTEuNzM3LDkuNTI2LTIxLjI2MiwyMS4yNjItMjEuMjYySDI1NS4xNSAgICBjMTEuNzU4LDAsMjEuMjYyLTkuNTA0LDIxLjI2Mi0yMS4yNjJTMjY2LjkwOCwwLjg1LDI1NS4xNSwwLjg1SDYzLjc4N0MyOC42MTksMC44NSwwLDI5LjQ3LDAsNjQuNjM4djM4Mi43MjQgICAgYzAsMzUuMTY4LDI4LjYxOSw2My43ODcsNjMuNzg3LDYzLjc4N0gyNTUuMTVjMTEuNzU4LDAsMjEuMjYyLTkuNTA0LDIxLjI2Mi0yMS4yNjIgICAgQzI3Ni40MTIsNDc4LjEyOSwyNjYuOTA4LDQ2OC42MjUsMjU1LjE1LDQ2OC42MjV6IiBmaWxsPSIjZjFlZWVlIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+Cgk8L2c+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxnPgoJCTxwYXRoIGQ9Ik01MDUuNjY0LDI0MC44NjFMMzc2LjM4OCwxMTMuMjg2Yy04LjMzNS04LjI1LTIxLjgxNS04LjE0My0zMC4wNjUsMC4yMTNzLTguMTY1LDIxLjgxNSwwLjIxMywzMC4wNjVsOTIuMzg1LDkxLjE3MyAgICBIMTkxLjM2MmMtMTEuNzU4LDAtMjEuMjYyLDkuNTA0LTIxLjI2MiwyMS4yNjJjMCwxMS43NTgsOS41MDQsMjEuMjYzLDIxLjI2MiwyMS4yNjNoMjQ3LjU1OWwtOTIuMzg1LDkxLjE3MyAgICBjLTguMzc3LDguMjUtOC40NDEsMjEuNzA5LTAuMjEzLDMwLjA2NWM0LjE2Nyw0LjIxLDkuNjUzLDYuMzM2LDE1LjEzOSw2LjMzNmM1LjQwMSwwLDEwLjgwMS0yLjA0MSwxNC45MjYtNi4xMjRsMTI5LjI3Ni0xMjcuNTc1ICAgIGM0LjA0LTMuOTk3LDYuMzM2LTkuNDQxLDYuMzM2LTE1LjEzOUM1MTIsMjUwLjMwMiw1MDkuNzI1LDI0NC44OCw1MDUuNjY0LDI0MC44NjF6IiBmaWxsPSIjZjFlZWVlIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+Cgk8L2c+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" style="height: 30px; width:30px; padding-bottom:6px;padding-right:5px" />Logout</button>
-            </form>
-        </li>
-    }
-    else
-    {
+    </ul>
 
-        <li class="nav-item">
+        }
+        else
+        {
+        <div class="top_bar_user">
+            <div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
+            <div><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" style="color:black">Register</a></div>
+            <div><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Sign in</a></div>
+        </div>
 
-            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDI0IDI0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBjbGFzcz0iIj48Zz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0xMS44OTQgMjRjLS4xMzEgMC0uMjU5LS4wNTItLjM1NC0uMTQ2LS4xMTgtLjExOC0uMTctLjI4OC0uMTM3LS40NTFsLjcwNy0zLjUzNWMuMDItLjA5OC4wNjYtLjE4Ny4xMzctLjI1Nmw3Ljc3OC03Ljc3OGMuNTg0LS41ODQgMS41MzctLjU4NCAyLjEyMSAwbDEuNDE0IDEuNDE0Yy41ODUuNTg1LjU4NSAxLjUzNiAwIDIuMTIxbC03Ljc3OCA3Ljc3OGMtLjA2OS4wNy0uMTU4LjExNy0uMjU2LjEzN2wtMy41MzUuNzA3Yy0uMDMyLjAwNi0uMDY1LjAwOS0uMDk3LjAwOXptMS4xNjgtMy43ODktLjUzIDIuNjUxIDIuNjUxLS41MyA3LjY3MS03LjY3MWMuMTk1LS4xOTUuMTk1LS41MTIgMC0uNzA3bC0xLjQxNC0xLjQxNGMtLjE5NS0uMTk1LS41MTItLjE5NS0uNzA3IDB6bTIuMzY3IDIuNTgyaC4wMXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im05LjUgMjFoLTdjLTEuMzc5IDAtMi41LTEuMTIxLTIuNS0yLjV2LTEzYzAtMS4zNzkgMS4xMjEtMi41IDIuNS0yLjVoMmMuMjc2IDAgLjUuMjI0LjUuNXMtLjIyNC41LS41LjVoLTJjLS44MjcgMC0xLjUuNjczLTEuNSAxLjV2MTNjMCAuODI3LjY3MyAxLjUgMS41IDEuNWg3Yy4yNzYgMCAuNS4yMjQuNS41cy0uMjI0LjUtLjUuNXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0xNi41IDEyYy0uMjc2IDAtLjUtLjIyNC0uNS0uNXYtNmMwLS44MjctLjY3My0xLjUtMS41LTEuNWgtMmMtLjI3NiAwLS41LS4yMjQtLjUtLjVzLjIyNC0uNS41LS41aDJjMS4zNzkgMCAyLjUgMS4xMjEgMi41IDIuNXY2YzAgLjI3Ni0uMjI0LjUtLjUuNXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0xMS41IDZoLTZjLS44MjcgMC0xLjUtLjY3My0xLjUtMS41di0yYzAtLjI3Ni4yMjQtLjUuNS0uNWgxLjU1Yy4yMzItMS4xNCAxLjI0My0yIDIuNDUtMnMyLjIxOC44NiAyLjQ1IDJoMS41NWMuMjc2IDAgLjUuMjI0LjUuNXYyYzAgLjgyNy0uNjczIDEuNS0xLjUgMS41em0tNi41LTN2MS41YzAgLjI3NS4yMjUuNS41LjVoNmMuMjc1IDAgLjUtLjIyNS41LS41di0xLjVoLTEuNWMtLjI3NiAwLS41LS4yMjQtLjUtLjUgMC0uODI3LS42NzMtMS41LTEuNS0xLjVzLTEuNS42NzMtMS41IDEuNWMwIC4yNzYtLjIyNC41LS41LjV6IiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJtMTMuNSA5aC0xMGMtLjI3NiAwLS41LS4yMjQtLjUtLjVzLjIyNC0uNS41LS41aDEwYy4yNzYgMCAuNS4yMjQuNS41cy0uMjI0LjUtLjUuNXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0xMy41IDEyaC0xMGMtLjI3NiAwLS41LS4yMjQtLjUtLjVzLjIyNC0uNS41LS41aDEwYy4yNzYgMCAuNS4yMjQuNS41cy0uMjI0LjUtLjUuNXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0xMy41IDE1aC0xMGMtLjI3NiAwLS41LS4yMjQtLjUtLjVzLjIyNC0uNS41LS41aDEwYy4yNzYgMCAuNS4yMjQuNS41cy0uMjI0LjUtLjUuNXoiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PC9zdmc+" style="height:35px;width:35px;padding:5px" />Registrarse</a>
+        }
 
-        </li>
-        <li>
-            <hr>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMi4wMTYgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBjbGFzcz0iIj48Zz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0xOTIgMjEzLjMzOTg0NGMtNTguODE2NDA2IDAtMTA2LjY2Nzk2OS00Ny44NDc2NTYtMTA2LjY2Nzk2OS0xMDYuNjY0MDYzIDAtNTguODE2NDA2IDQ3Ljg1MTU2My0xMDYuNjY3OTY4NSAxMDYuNjY3OTY5LTEwNi42Njc5Njg1czEwNi42Njc5NjkgNDcuODUxNTYyNSAxMDYuNjY3OTY5IDEwNi42Njc5Njg1YzAgNTguODE2NDA3LTQ3Ljg1MTU2MyAxMDYuNjY0MDYzLTEwNi42Njc5NjkgMTA2LjY2NDA2M3ptMC0xODEuMzMyMDMyYy00MS4xNzE4NzUgMC03NC42Njc5NjkgMzMuNDkyMTg4LTc0LjY2Nzk2OSA3NC42Njc5NjkgMCA0MS4xNzE4NzUgMzMuNDk2MDk0IDc0LjY2NDA2MyA3NC42Njc5NjkgNzQuNjY0MDYzczc0LjY2Nzk2OS0zMy40OTIxODggNzQuNjY3OTY5LTc0LjY2NDA2M2MwLTQxLjE3NTc4MS0zMy40OTYwOTQtNzQuNjY3OTY5LTc0LjY2Nzk2OS03NC42Njc5Njl6bTAgMCIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTM2OCA0NDguMDA3ODEyaC0zNTJjLTguODMyMDMxIDAtMTYtNy4xNjc5NjgtMTYtMTZ2LTc0LjY2Nzk2OGMwLTU1Ljg3MTA5NCA0NS40NjA5MzgtMTAxLjMzMjAzMiAxMDEuMzMyMDMxLTEwMS4zMzIwMzJoMTgxLjMzNTkzOGM1NS44NzEwOTMgMCAxMDEuMzMyMDMxIDQ1LjQ2MDkzOCAxMDEuMzMyMDMxIDEwMS4zMzIwMzJ2NzQuNjY3OTY4YzAgOC44MzIwMzItNy4xNjc5NjkgMTYtMTYgMTZ6bS0zMzYtMzJoMzIwdi01OC42Njc5NjhjMC0zOC4yMjY1NjMtMzEuMTA1NDY5LTY5LjMzMjAzMi02OS4zMzIwMzEtNjkuMzMyMDMyaC0xODEuMzM1OTM4Yy0zOC4yMjY1NjIgMC02OS4zMzIwMzEgMzEuMTA1NDY5LTY5LjMzMjAzMSA2OS4zMzIwMzJ6bTAgMCIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTQ5NiAyMTguNjc1NzgxaC0xODEuMzMyMDMxYy04LjgzMjAzMSAwLTE2LTcuMTY3OTY5LTE2LTE2czcuMTY3OTY5LTE2IDE2LTE2aDE4MS4zMzIwMzFjOC44MzIwMzEgMCAxNiA3LjE2Nzk2OSAxNiAxNnMtNy4xNjc5NjkgMTYtMTYgMTZ6bTAgMCIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTQxMC42Njc5NjkgMzA0LjAwNzgxMmMtNC4wOTc2NTcgMC04LjE5MTQwNy0xLjU1ODU5My0xMS4zMDg1OTQtNC42OTE0MDYtNi4yNS02LjI1MzkwNi02LjI1LTE2LjM4NjcxOCAwLTIyLjYzNjcxOGw3NC4wMjczNDQtNzQuMDI3MzQ0LTc0LjAyNzM0NC03NC4wMjczNDRjLTYuMjUtNi4yNS02LjI1LTE2LjM4MjgxMiAwLTIyLjYzMjgxMnMxNi4zODI4MTMtNi4yNSAyMi42MzY3MTkgMGw4NS4zMzIwMzEgODUuMzMyMDMxYzYuMjUgNi4yNSA2LjI1IDE2LjM4NjcxOSAwIDIyLjYzNjcxOWwtODUuMzMyMDMxIDg1LjMzMjAzMWMtMy4xMzY3MTkgMy4xNTYyNS03LjIzNDM3NSA0LjcxNDg0My0xMS4zMjgxMjUgNC43MTQ4NDN6bTAgMCIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjwvZz48L3N2Zz4=" style="height: 35px; width: 35px; padding: 5px" />Iniciar Sesion</a>
-        </li>
-    }
-</ul>
-<style>
-    hr {
-        border: none;
-        border-left: 1px solid hsla(200, 10%, 50%,100);
-        border-left-color: white;
-        height: 30px;
-        width: 1px;
-        margin: 0px;
-    }
-</style>
+        <style>
+            hr {
+                border: none;
+                border-left: 1px solid hsla(200, 10%, 50%,100);
+                border-left-color: white;
+                height: 30px;
+                width: 1px;
+                margin: 0px;
+            }
+        </style>
 

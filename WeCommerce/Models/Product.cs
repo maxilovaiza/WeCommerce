@@ -29,7 +29,7 @@ namespace WeCommerce.Models
         [MaxLength(20)]
         public string Code { get; set; }
 
-
+        [Column(TypeName ="decimal(18,4)")]
         [Display(Name = "Precio")]
         [Required(ErrorMessage = "El precio es requerido")]
 

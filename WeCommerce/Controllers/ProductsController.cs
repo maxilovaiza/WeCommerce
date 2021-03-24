@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -24,6 +25,7 @@ namespace WeCommerce.Controllers
         }
        
         // GET: Products
+        [Authorize(Roles ="Admin")]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Index()
         {
