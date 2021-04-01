@@ -148,3 +148,18 @@ $(document).ready(function () {
 
 
 });
+
+function GetTotalCarrito() {
+    $.ajax({
+        url: "/VentaCabeceras/GetTotalCarrito",
+        type: "post",
+        cache: false,
+        success: function (retorno) {
+            $("#CantCarrito").html(retorno);
+        },
+        error: function (error) {
+
+        }
+
+    })
+};

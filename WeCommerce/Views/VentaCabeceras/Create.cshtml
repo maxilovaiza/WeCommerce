@@ -4,106 +4,120 @@
     ViewData["Title"] = "Create";
 }
 <link href="~/css/Cart.css" rel="stylesheet" />
-<h1>Create</h1>
 
-<h4>VentaCabecera</h4>
-<hr />
 <div class="cart_section">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
-                    <div class="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
-                   
-                        <div class="cart_items">
-                            <ul class="cart_list">
-                                @foreach (var item in Model.Details)
-                                {
-                                    var cantidad=0;
-                                    cantidad++;
-                                    <li class="cart_item clearfix">
-                                        <div class="cart_item_image"><img src="@("~/Files/Img/Product/" + item.getProductos().ImageName)" asp-append-version="true"></div>
-                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                            <div class="cart_item_name cart_info_col">
-                                                <div class="cart_item_title">Name</div>
-                                                <div class="cart_item_text">@item.getProductos().Title</div>
-                                            </div>
-                                            <div class="cart_item_quantity cart_info_col">
-                                                <div class="cart_item_title">Cantidad</div>
-                                                <div class="cart_item_text">@item.Quntity</div>
-                                            </div>
-                                            <div class="cart_item_price cart_info_col">
-                                                <div class="cart_item_title">Price</div>
-                                                <div class="cart_item_text">$ @item.getProductos().Price</div>
-                                            </div>
-                                            <div class="cart_item_total cart_info_col">
-                                                <div class="cart_item_title">Total</div>
-                                                <div class="cart_item_text">₹22000</div>
-                                            </div>
+                    <div class="cart_title">Carrito de Compras</div>
+
+                    <div class="cart_items">
+                        <ul class="cart_list">
+                            @foreach (var item in Model.Details)
+                            {
+
+                                <li class="cart_item clearfix">
+                                    <div class="cart_item_image"><img src="@("~/Files/Img/Product/" + item.getProductos().ImageName)" asp-append-version="true"></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="cart_item_name cart_info_col">
+                                            <div class="cart_item_title">Producto</div>
+                                            <div class="cart_item_text">@item.getProductos().Title</div>
                                         </div>
-                                    </li>
-                                }
-                                </ul>
-                        </div>
-                  
+                                        <div class="cart_item_quantity cart_info_col">
+                                            <div class="cart_item_title">Cantidad</div>
+                                            <div class="cart_item_text">@item.Quntity</div>
+                                        </div>
+                                        <div class="cart_item_price cart_info_col">
+                                            <div class="cart_item_title">Precio /u</div>
+                                            <div class="cart_item_text">$@item.getProductos().Price</div>
+                                        </div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_title">SubTotal</div>
+                                            <div class="cart_item_text">$@(item.Quntity*item.getProductos().Price)</div>
+                                        </div>
+                                        <button class="button cart_button_checkout" onclick="EliminarProdCart(@item.ProductId)"><i class="fas fa-trash-alt" ></i></button>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
 
                     <div class="order_total">
                         <div class="order_total_content text-md-right">
-                            <div class="order_total_title">Order Total:</div>
-                            <div class="order_total_amount">₹22000</div>
+                            <div class="order_total_title">Orden Total:</div>
+                            <div class="order_total_amount">$<span id="total">0</span></div>
                         </div>
                     </div>
-                    <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Continue Shopping</button> <button type="button" class="button cart_button_checkout">Add to Cart</button> </div>
+                    <div class="cart_buttons row" style="float:right">
+                        <div><button class="button cart_button_clear"><a asp-action="Index" asp-controller="ProductosVistaController1" style="color:gray">Seguir Comprando</a> </button></div>
+                        <div><form asp-action="Create"><div asp-validation-summary="ModelOnly" class="text-danger"></div><div class="form-group"><input type="submit" value="Comprar" class="button cart_button_checkout" /></div></form> </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @foreach (var item in Model.Details)
-            {
-                <div class="row">
-                    <div class="col-3">
 
-                        <img src=""  class="w-auto h-auto" />
-                    </div>
-                    <div class="col-2">
-                        <p class="font-weight-bold">
-                            
-                        </p>
-                        <p>
-                            @item.getProductos().Description
-                        </p>
-                       
-                    </div>
-                    <div class="col-2">
-                        <p class="font-weight-bold">
-                            Cantidad Comprada: <span Id="QuantitySpan_@item.Id">@item.Quntity </span>
-                        </p>
-                    </div>
-                    <div class="col-2">
-                        <p class="font-weight-bold" id="TotalPrice_@item.Id">
-                            
-                        </p>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" onclick="addProduct(@item.Id)">+ Agregar al Carrito</button>
-                    </div>
 
-                </div>
+
+@section Scripts{
+    <script>
+
+        $(document).ready(
+            function GetTotal() {
+                $.ajax({
+
+                    url: "/VentaCabeceras/GetTotalImport",
+                    type: "post",
+                    
+                    cache: false,
+                    success: function (retorno) {
+                        $("#total").html(retorno);
+                        GetTotalCarrito();
+                    },
+                    error: function (error) {
+
+                    }
+
+
+
+
+
+                })
+            });
+
+
+
+
+
+    </script>
+<script>
+    function EliminarProdCart (idproductodelete){
+        $.ajax({
+            url: "/VentaCabeceras/DeleteProducto",
+            type: "post",
+            data: { idproducto: idproductodelete },
+            cache: false,
+            success: function () {
+                window.location = "/VentaCabeceras/Create";
+            },
+            error: function (error) {
+
             }
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+        })
+    };
+
+
+
+</script>
+}
+
+
 

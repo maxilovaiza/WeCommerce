@@ -30,5 +30,8 @@ namespace WeCommerce.Models
             return product;
         }
 
+        public int VentaCabeceraId { get; set; }
+
+
     }
 }

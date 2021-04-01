@@ -37,5 +37,7 @@ namespace WeCommerce.Data
         public DbSet<WeCommerce.Models.Product> Product { get; set; }
         public DbSet<WeCommerce.Models.Category> Category { get; set; }
         public DbSet<WeCommerce.Models.VentaCabecera> VentaCabecera { get; set; }
+
+        public DbSet<WeCommerce.Models.VentaDetalle> VentasDetalles { get; set; }
     }
 }
