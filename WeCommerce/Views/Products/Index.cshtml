@@ -6,18 +6,24 @@
 
 }
 
-<head>
 
-    
-</head>
 
 <body>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    <div class="titles" >
+        <h3 class="titles-text"  >Productos</h3>
+    </div>
+    <div class="btnstil">
+        <button type="button" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> <a asp-action="Create" style="color:white">Agregar Producto</a>
+        </button>
+    </div>
+    
+
+      
+    
 
     <table class="table">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.ImageName)
@@ -43,7 +49,7 @@
             {
                 <tr>
                     <td>
-                        <img src="@("~/files/img/product/"+item.ImageName)" asp-append-version="true" width="50px" height="50px" />
+                        <img src="@("~/files/img/product/"+item.ImageName)" asp-append-version="true" width="50" height="50" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
@@ -60,9 +66,9 @@
 
 
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" style="color:black"><i class="bi bi-pencil"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.Id" style="color:black"><i class="bi bi-card-list"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash" style="color:red"></i></a>
                     </td>
                 </tr>
             }

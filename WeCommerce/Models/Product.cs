@@ -15,7 +15,7 @@ namespace WeCommerce.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "La Descripcion es requerida")]
-        [MaxLength(150, ErrorMessage = "El maximo de caracteres es 150")]
+        [MaxLength(700, ErrorMessage = "El maximo de caracteres es 700")]
         [Display(Name = "Descripcion")]
         public string Description { get; set; }
 
@@ -29,7 +29,7 @@ namespace WeCommerce.Models
         [MaxLength(20)]
         public string Code { get; set; }
 
-        [Column(TypeName ="decimal(18,4)")]
+        [Column(TypeName ="decimal(18,2)")]
         [Display(Name = "Precio")]
         [Required(ErrorMessage = "El precio es requerido")]
 
@@ -41,6 +41,10 @@ namespace WeCommerce.Models
         public int CategoryId { get; set; }
 
         public string ImageName { get; set; }
+        [Display(Name = "Marca")]
+        [Required(ErrorMessage = "Debe seleccionar una categoria")]
+        public int MarcaId { get; set; }
+
 
 
     }

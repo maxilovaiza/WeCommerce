@@ -33,6 +33,7 @@ namespace WeCommerce.Controllers
         }
 
         // GET: Products/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -51,9 +52,10 @@ namespace WeCommerce.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-
+            ViewBag.Marcas = Helpers.Functions.GetMarca();
             ViewBag.Categorys = Helpers.Functions.GetCategorys();
             return View();
         }
@@ -63,7 +65,8 @@ namespace WeCommerce.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,Title,Code,Price,CategoryId,ImageName")] Product product)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create([Bind("Id,Description,Title,Code,Price,MarcaId,CategoryId,ImageName")] Product product)
         {
             if (ModelState.IsValid)
             { //Save image to wwwroot/image
@@ -99,7 +102,7 @@ namespace WeCommerce.Controllers
             }
             return View(product);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -113,7 +116,10 @@ namespace WeCommerce.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Marcas = Helpers.Functions.GetMarca();
+            ViewBag.Categorys = Helpers.Functions.GetCategorys();
             return View(product);
+
         }
 
         // POST: Products/Edit/5
@@ -121,7 +127,8 @@ namespace WeCommerce.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Title,Code,Price,CategoryId,ImageName")] Product product)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Title,Code,Price,MarcaId,CategoryId,ImageName")] Product product)
         {
             if (id != product.Id)
             {
@@ -152,6 +159,7 @@ namespace WeCommerce.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -170,6 +178,7 @@ namespace WeCommerce.Controllers
         }
 
         // POST: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

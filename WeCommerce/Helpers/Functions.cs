@@ -19,7 +19,15 @@ namespace WeCommerce.Helpers
 
 
         }
+        public static SelectList GetMarca()
+        {
+            var dbContext = new ApplicationDbContext();
+            var ltsMarca = dbContext.Marca.ToList();
+            var SelectList = new SelectList(ltsMarca, "Id", "Description");
+            return SelectList;
 
+
+        }
 
 
     }

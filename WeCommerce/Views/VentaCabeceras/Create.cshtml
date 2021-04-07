@@ -5,15 +5,15 @@
 }
 <link href="~/css/Cart.css" rel="stylesheet" />
 
-<div class="cart_section">
+<div class="cart_section" >
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
                     <div class="cart_title">Carrito de Compras</div>
 
-                    <div class="cart_items">
-                        <ul class="cart_list">
+                    <div class="cart_items" >
+                        <ul class="cart_list" id="recargar">
                             @foreach (var item in Model.Details)
                             {
 
@@ -36,7 +36,7 @@
                                             <div class="cart_item_title">SubTotal</div>
                                             <div class="cart_item_text">$@(item.Quntity*item.getProductos().Price)</div>
                                         </div>
-                                        <button class="button cart_button_checkout" onclick="EliminarProdCart(@item.ProductId)"><i class="fas fa-trash-alt" ></i></button>
+                                        <button class="button cart_button_checkout" onclick="EliminarProdCart(@item.ProductId)"><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                 </li>
                             }
@@ -72,7 +72,7 @@
 
                     url: "/VentaCabeceras/GetTotalImport",
                     type: "post",
-                    
+
                     cache: false,
                     success: function (retorno) {
                         $("#total").html(retorno);
@@ -94,29 +94,31 @@
 
 
     </script>
-<script>
-    function EliminarProdCart (idproductodelete){
-        $.ajax({
-            url: "/VentaCabeceras/DeleteProducto",
-            type: "post",
-            data: { idproducto: idproductodelete },
-            cache: false,
-            success: function () {
-                window.location = "/VentaCabeceras/Create";
-            },
-            error: function (error) {
+    <script>
+        function EliminarProdCart(idproductodelete) {
+            $.ajax({
+                url: "/VentaCabeceras/DeleteProducto",
+                type: "post",
+                data: { idproducto: idproductodelete },
+                cache: false,
+                success: function () {
+                   
+                   window.location = "/VentaCabeceras/Create";
+                },
+                error: function (error) {
 
-            }
-
-
-
-
-        })
-    };
+                }
 
 
 
-</script>
+
+            })
+        };
+
+
+
+
+    </script>
 }
 
 

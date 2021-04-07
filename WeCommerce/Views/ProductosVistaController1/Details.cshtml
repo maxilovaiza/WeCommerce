@@ -6,75 +6,168 @@
 }
 <link href="~/css/Detalles.css" rel="stylesheet" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
+<div class="super_container " style="margin-top:100px;margin-bottom:100px;z-index:100">
 
-<div class="super_container">
-    <header class="header" style="display: none;">
-        <div class="header_main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
-                        <div class="header_search">
-                            <div class="header_search_content">
-                                <div class="header_search_form_container">
-                                    <form action="#" class="header_search_form clearfix">
-                                        <div class="custom_dropdown">
-                                            <div class="custom_dropdown_list">
-                                                <span class="custom_dropdown_placeholder clc">All Categories</span> <i class="fas fa-chevron-down"></i>
-                                                <ul class="custom_list clc">
-                                                    <li><a class="clc" href="#">All Categories</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+
+
+    <div class="container" style="margin:auto">
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12 col-md-6" style="margin-top: 10px;margin-bottom: 10px">
+                    <!-- Card -->
+                    <div class="card" style="height: 100%">
+                        <div class="image_selected" style="margin:auto"><img src="@("~/Files/Img/Product/"+Model.ImageName)" asp-append-version="true" width="250" height="250" /></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
-    <div class="single_product">
-        <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
-            <div class="row">
-                
-                <div class="col-lg-4 order-lg-2 order-1">
-                    <div class="image_selected"><img src="@("~/Files/Img/Product/"+Model.ImageName)" asp-append-version="true" width="250" height="250" /></div>
-                </div>
-                <div class="col-lg-6 order-3">
-                    <div class="product_description">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item" ><a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                <div class="col-12 col-md-6 pl-lg-10 " style="margin-top: 10px;margin-bottom: 10px;background: #ffffff;padding:20px">
+
+                    <!-- Header -->
+                    <div class="row mb-1">
+
+                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                            <ol class="breadcrumb" style="margin-top:10px;margin-bottom:10px;background:#ffffff">
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Inicio</a></li>
                                 <li class="breadcrumb-item"><a asp-controller="ProductosVistaController1" asp-action="Index">Productos</a></li>
                                 <li class="breadcrumb-item active">Accessories</li>
                             </ol>
                         </nav>
-                        <div class="product_name"> @Html.DisplayFor(model => model.Title)</div>
-                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 Star</span> <span class="rating-review">35 Ratings & 45 Reviews</span></div>
-                        <div> <span class="product_price">$ @Html.DisplayFor(model => model.Price)</span> <strike class="product_discount"> <span style='color:black'>$ 10,000<span> </strike> </div>
-                        <div> <span class="product_saved">Descuento de:</span> <span style='color:black'>$ 10,000<span> </div>
-                        <hr class="singleline">
-                        <div> <span class="product_info">@Html.DisplayFor(model => model.Description)<span></div>
-                        <div class="row">
-                            <div class="col-xs-6" style="margin-left: 13px;">
-                                <div class="product_quantity">
-                                    <span>QTY: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
+
+
+
+                    </div>
+
+                    <!-- Heading -->
+                    <h3 class="mb-2">@Html.DisplayFor(model => model.Title)</h3>
+
+                    <!-- Price -->
+                    <div class="mb-7">
+
+                        <span class="ml-1 font-size-h5 font-weight-bolder text-primary" style="font-size:30px">$@Html.DisplayFor(model => model.Price)</span>
+
+
+                    </div>
+                    <div class="mb-7" style="margin-top:20px">
+                        <span>Puntiaciones</span>
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                    </div>
+
+                    <!-- Form -->
+                    <form>
+                        <div class="form-group">
+
+                            <!-- Label -->
+                            <p class="mb-5" style="visibility:hidden">
+                                Color: <strong id="colorCaption">White</strong>
+                            </p>
+
+                            <!-- Radio -->
+                            <div class="mb-8 ml-n1">
+                                <div>@Html.DisplayFor(model => model.Description)</div>
+                            </div>
+
+                        </div>
+                        <div class="form-group" style="margin-top:30px">
+
+
+
+                            <!-- Radio -->
+                            <div class="mb-2">
+                                <div class=" mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16" style="color: limegreen">
+                                        <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                    </svg><a style="color: limegreen;font-size: 20px;font-family: Nunito">  Entrega Inmediata</a><br />
+                                    <span style="color:grey">Envio a todo el pais</span>
+                                </div>
+                                <div class=" mb-2" style="margin-top:10px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16" style="color: limegreen">
+                                        >
+                                        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z" />
+                                    </svg><a style="color:limegreen;font-size:20px;font-family: Nunito">  Devolucion sin costo</a><br />
+                                    <span style="color:grey">Tenes 30 dias para devolver</span>
+                                </div>
+                                <div class=" mb-2" style="margin-top:10px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16" style="color: limegreen">
+                                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z" />
+                                    </svg><a style="color:limegreen;font-size:20px;font-family: Nunito">  Devolucion sin costo</a><br />
+                                    <span style="color:grey">Todos los metodos de pago</span>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="col-6"> <button class="cart-button"> <span class="add-to-cart">Agg al Carrito</span> <span class="added">Agregado</span> <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i> </button> </div>
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+
+
+
+                            <div class="form-row mb-7" style="margin-top:70px">
+                                <div class="col-12 col-lg-auto">
+
+                                    <!-- Quantity -->
+                                    <select class="custom-select mb-2" id="inputcantidad">
+                                        <option value="1" selected="">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-12 col-lg">
+
+                                    <!-- Submit -->
+                                    <button type="submit" class="btn btn-block btn-dark mb-2" onclick="addProduct(@Html.DisplayFor(model => model.Id))">
+                                        <a style="font-size:20px;font-family: Nunito">  Agregar al Carrito</a>  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+                                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </button>
+
+                                </div>
+
                             </div>
+
+
                         </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
 
+
+<script>
+    function addProduct(id) {
+        var input = $("#inputcantidad").val();
+        if (input == null) {
+            input = 1;
+        }
+        $.ajax({
+
+            url: "/VentaCabeceras/AddProdCarrito",
+            data: {
+                IdProduct: id, cantidad: input
+            },
+            type: "post",
+            cache: false,
+
+            success: function () {
+                GetTotalCarrito();
+
+            },
+            error: function (error) {
+
+
+                console.log(error);
+            }
+        });
+    }
+
+
+
+
+</script>

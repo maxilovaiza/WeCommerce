@@ -39,5 +39,7 @@ namespace WeCommerce.Data
         public DbSet<WeCommerce.Models.VentaCabecera> VentaCabecera { get; set; }
 
         public DbSet<WeCommerce.Models.VentaDetalle> VentasDetalles { get; set; }
+
+        public DbSet<WeCommerce.Models.Marca> Marca { get; set; }
     }
 }

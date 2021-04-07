@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WeCommerce.Models.Marca>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutOtros";
+}
+
+<div class="titles">
+    <h3 class="titles-text">Marcas</h3>
+</div>
+<div class="btnstil">
+    <button type="button" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> <a asp-action="Create" style="color:white">Agregar Marca</a>
+    </button>
+</div>
+<table class="table ">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td class="opciones">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" style="color:black"><i class="bi bi-pencil"></i> Editar</a> 
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" style="color:black"><i class="bi bi-card-list"></i> Detalles</a> 
+
+            </td>
+            <td>
+               
+                
+                <a asp-action="Delete" asp-route-id="@item.Id" style="color:red"><i class="bi bi-trash" style="color:red"></i> Eliminar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

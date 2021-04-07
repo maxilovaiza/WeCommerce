@@ -1,0 +1,41 @@
+﻿.titles {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #212529;
+    margin-bottom:10px
+}
+
+.titlesUser {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+    margin-top: 10px;
+    background-color: darkorange;
+    margin-bottom: 10px;
+    width:auto
+
+}
+
+.titles-text-user {
+    padding: 5px;
+    font-family: Bungee Shade;
+    color: white
+}
+.titles-text {
+    padding: 5px;
+    font-family: Bungee Shade;
+    color: darkorange
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+}
+
+.btnstil {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+

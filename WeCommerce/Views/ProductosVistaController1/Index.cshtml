@@ -3,148 +3,118 @@
 
 @{
     ViewData["Title"] = "Index";
-    
+
 }
 <head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
     <link href="~/css/site.css" rel="stylesheet" />
-    <link href="~/css/navStylet.css" rel="stylesheet" />
     <link href="~/css/productos.css" rel="stylesheet" />
     <link href="~/css/filter.css" rel="stylesheet" />
-    <link href="~/css/Style.css" rel="stylesheet" />
+    <link href="~/css/Accordion.css" rel="stylesheet" />
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link href="~/css/titulos.css" rel="stylesheet" />
+
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script src="~/js/filtros.js"></script>
 
 
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
 </head>
 
 <body>
     <div class="col-12 " style="margin-top:20px">
         <div class="row">
-            <div class="col-2 " style="visibility:hidden;margin-right:115px">
+            <div class="col-3 " style="visibility:hidden">
                 <a>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a>
             </div>
-            <div class="contenedor" >
-                <h3>Productos Destacados</h3>
-                <img src="https://compragamer.net/categorias_demo/defaultAngular.jpg"  width="840"/>
-                
-                
+            <div class="contenedor col-7">
+                <div class="titlesUser">
+                    <h3 class="titles-text-user">Productos Destacados</h3>
+                </div>
+                <img src="https://compragamer.net/categorias_demo/defaultAngular.jpg" width="825" />
+
+
             </div>
-            
+
         </div>
-        
-        
+
+
     </div>
 
     <div class="col-12 " style="margin-top:10px">
-        <div class="row" style="margin-left:100px">
-            <div class="col-2">
-                <div class="card">
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <div class="row">
-                                <a href="#" data-toggle="collapse" data-target="#collapse_aside1" data-abc="true" aria-expanded="false" style="margin-right:120px" class="collapsed">
-
-                                    <h6 class="title">Categories </h6>
-
-                                </a>
-                                <div class="justify-content-end">
-                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwLjY4OCA0OTAuNjg4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTAuNjg4IDQ5MC42ODg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGRkMxMDc7IiBkPSJNNDcyLjMyOCwxMjAuNTI5TDI0NS4yMTMsMzQ3LjY2NUwxOC4wOTgsMTIwLjUyOWMtNC4yMzctNC4wOTMtMTAuOTktMy45NzUtMTUuMDgzLDAuMjYyDQoJYy0zLjk5Miw0LjEzNC0zLjk5MiwxMC42ODcsMCwxNC44MmwyMzQuNjY3LDIzNC42NjdjNC4xNjUsNC4xNjQsMTAuOTE3LDQuMTY0LDE1LjA4MywwbDIzNC42NjctMjM0LjY2Nw0KCWM0LjIzNy00LjA5Myw0LjM1NC0xMC44NDUsMC4yNjItMTUuMDgzYy00LjA5My00LjIzNy0xMC44NDUtNC4zNTQtMTUuMDgzLTAuMjYyYy0wLjA4OSwwLjA4Ni0wLjE3NiwwLjE3My0wLjI2MiwwLjI2Mg0KCUw0NzIuMzI4LDEyMC41Mjl6Ii8+DQo8cGF0aCBkPSJNMjQ1LjIxMywzNzMuNDE1Yy0yLjgzMSwwLjAwNS01LjU0OC0xLjExNS03LjU1Mi0zLjExNUwyLjk5NCwxMzUuNjMzYy00LjA5My00LjIzNy0zLjk3NS0xMC45OSwwLjI2Mi0xNS4wODMNCgljNC4xMzQtMy45OTIsMTAuNjg3LTMuOTkyLDE0LjgyLDBsMjI3LjEzNiwyMjcuMTE1bDIyNy4xMTUtMjI3LjEzNmM0LjA5My00LjIzNywxMC44NDUtNC4zNTQsMTUuMDgzLTAuMjYyDQoJYzQuMjM3LDQuMDkzLDQuMzU0LDEwLjg0NSwwLjI2MiwxNS4wODNjLTAuMDg2LDAuMDg5LTAuMTczLDAuMTc2LTAuMjYyLDAuMjYyTDI1Mi43NDQsMzcwLjI3OQ0KCUMyNTAuNzQ4LDM3Mi4yODEsMjQ4LjAzOSwzNzMuNDA4LDI0NS4yMTMsMzczLjQxNXoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" width="10" height="10" style="margin-top:7px" />
-
-                                </div>
-
-                            </div>
-                        </header>
-                        <div class="filter-content collapse" id="collapse_aside1" style="">
-                            <div class="card-body">
-                                <ul class="list-menu">
-                                    <li><a href="#" data-abc="true">Electronics </a></li>
-                                    <li><a href="#" data-abc="true">Watches </a></li>
-                                    <li><a href="#" data-abc="true">Laptops </a></li>
-                                    <li><a href="#" data-abc="true">Clothes </a></li>
-                                    <li><a href="#" data-abc="true">Accessories </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <div class="row">
-                                <a href="#" data-toggle="collapse" data-target="#collapse_aside2" data-abc="true" aria-expanded="false" style="margin-right:160px" class="collapsed">
-
-                                    <h6 class="title">Price </h6>
-                                </a>
-                                <div class="justify-content-end">
-                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwLjY4OCA0OTAuNjg4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTAuNjg4IDQ5MC42ODg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGRkMxMDc7IiBkPSJNNDcyLjMyOCwxMjAuNTI5TDI0NS4yMTMsMzQ3LjY2NUwxOC4wOTgsMTIwLjUyOWMtNC4yMzctNC4wOTMtMTAuOTktMy45NzUtMTUuMDgzLDAuMjYyDQoJYy0zLjk5Miw0LjEzNC0zLjk5MiwxMC42ODcsMCwxNC44MmwyMzQuNjY3LDIzNC42NjdjNC4xNjUsNC4xNjQsMTAuOTE3LDQuMTY0LDE1LjA4MywwbDIzNC42NjctMjM0LjY2Nw0KCWM0LjIzNy00LjA5Myw0LjM1NC0xMC44NDUsMC4yNjItMTUuMDgzYy00LjA5My00LjIzNy0xMC44NDUtNC4zNTQtMTUuMDgzLTAuMjYyYy0wLjA4OSwwLjA4Ni0wLjE3NiwwLjE3My0wLjI2MiwwLjI2Mg0KCUw0NzIuMzI4LDEyMC41Mjl6Ii8+DQo8cGF0aCBkPSJNMjQ1LjIxMywzNzMuNDE1Yy0yLjgzMSwwLjAwNS01LjU0OC0xLjExNS03LjU1Mi0zLjExNUwyLjk5NCwxMzUuNjMzYy00LjA5My00LjIzNy0zLjk3NS0xMC45OSwwLjI2Mi0xNS4wODMNCgljNC4xMzQtMy45OTIsMTAuNjg3LTMuOTkyLDE0LjgyLDBsMjI3LjEzNiwyMjcuMTE1bDIyNy4xMTUtMjI3LjEzNmM0LjA5My00LjIzNywxMC44NDUtNC4zNTQsMTUuMDgzLTAuMjYyDQoJYzQuMjM3LDQuMDkzLDQuMzU0LDEwLjg0NSwwLjI2MiwxNS4wODNjLTAuMDg2LDAuMDg5LTAuMTczLDAuMTc2LTAuMjYyLDAuMjYyTDI1Mi43NDQsMzcwLjI3OQ0KCUMyNTAuNzQ4LDM3Mi4yODEsMjQ4LjAzOSwzNzMuNDA4LDI0NS4yMTMsMzczLjQxNXoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" width="10" height="10" style="margin-top:7px" />
-
-                                </div>
-                            </div>
-
-
-                        </header>
-                        <div class="filter-content collapse" id="collapse_aside2" style="">
-                            <div class="card-body">
-                                <input type="range" class="custom-range" min="0" max="100" name="">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6"> <label>Min</label> <input class="form-control" placeholder="$0" type="number"> </div>
-                                    <div class="form-group text-right col-md-6"> <label>Max</label> <input class="form-control" placeholder="$1,0000" type="number"> </div>
-                                </div> <a href="#" class="highlight-button btn btn-medium button xs-margin-bottom-five" data-abc="true">Apply Now</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <div class="row">
-                                <a href="#" data-toggle="collapse" data-target="#collapse_aside3" data-abc="true" aria-expanded="false" style="margin-right:165px" class="collapsed">
-
-                                    <h6 class="title">Size </h6>
-                                </a>
-                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwLjY4OCA0OTAuNjg4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTAuNjg4IDQ5MC42ODg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGRkMxMDc7IiBkPSJNNDcyLjMyOCwxMjAuNTI5TDI0NS4yMTMsMzQ3LjY2NUwxOC4wOTgsMTIwLjUyOWMtNC4yMzctNC4wOTMtMTAuOTktMy45NzUtMTUuMDgzLDAuMjYyDQoJYy0zLjk5Miw0LjEzNC0zLjk5MiwxMC42ODcsMCwxNC44MmwyMzQuNjY3LDIzNC42NjdjNC4xNjUsNC4xNjQsMTAuOTE3LDQuMTY0LDE1LjA4MywwbDIzNC42NjctMjM0LjY2Nw0KCWM0LjIzNy00LjA5Myw0LjM1NC0xMC44NDUsMC4yNjItMTUuMDgzYy00LjA5My00LjIzNy0xMC44NDUtNC4zNTQtMTUuMDgzLTAuMjYyYy0wLjA4OSwwLjA4Ni0wLjE3NiwwLjE3My0wLjI2MiwwLjI2Mg0KCUw0NzIuMzI4LDEyMC41Mjl6Ii8+DQo8cGF0aCBkPSJNMjQ1LjIxMywzNzMuNDE1Yy0yLjgzMSwwLjAwNS01LjU0OC0xLjExNS03LjU1Mi0zLjExNUwyLjk5NCwxMzUuNjMzYy00LjA5My00LjIzNy0zLjk3NS0xMC45OSwwLjI2Mi0xNS4wODMNCgljNC4xMzQtMy45OTIsMTAuNjg3LTMuOTkyLDE0LjgyLDBsMjI3LjEzNiwyMjcuMTE1bDIyNy4xMTUtMjI3LjEzNmM0LjA5My00LjIzNywxMC44NDUtNC4zNTQsMTUuMDgzLTAuMjYyDQoJYzQuMjM3LDQuMDkzLDQuMzU0LDEwLjg0NSwwLjI2MiwxNS4wODNjLTAuMDg2LDAuMDg5LTAuMTczLDAuMTc2LTAuMjYyLDAuMjYyTDI1Mi43NDQsMzcwLjI3OQ0KCUMyNTAuNzQ4LDM3Mi4yODEsMjQ4LjAzOSwzNzMuNDA4LDI0NS4yMTMsMzczLjQxNXoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" width="10" height="10" style="margin-top:7px" />
-
-                            </div>
-
-                        </header>
-                        <div class="filter-content collapse" id="collapse_aside3" style="">
-                            <div class="card-body"> <label class="checkbox-btn"> <input type="checkbox"> <span class="btn btn-light"> XS </span> </label> <label class="checkbox-btn"> <input type="checkbox"> <span class="btn btn-light"> SM </span> </label> <label class="checkbox-btn"> <input type="checkbox"> <span class="btn btn-light"> LG </span> </label> <label class="checkbox-btn"> <input type="checkbox"> <span class="btn btn-light"> XXL </span> </label> <label class="checkbox-btn"> <input type="checkbox"> <span class="btn btn-light"> XXXL </span> </label> </div>
-                        </div>
-                    </article>
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <div class="row">
-
-                                <a href="#" data-toggle="collapse" data-target="#collapse_aside4" data-abc="true" class="collapsed" style="margin-right:145px" aria-expanded="false">
-
-                                    <h6 class="title">Rating </h6>
-                                </a>
-                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwLjY4OCA0OTAuNjg4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTAuNjg4IDQ5MC42ODg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGRkMxMDc7IiBkPSJNNDcyLjMyOCwxMjAuNTI5TDI0NS4yMTMsMzQ3LjY2NUwxOC4wOTgsMTIwLjUyOWMtNC4yMzctNC4wOTMtMTAuOTktMy45NzUtMTUuMDgzLDAuMjYyDQoJYy0zLjk5Miw0LjEzNC0zLjk5MiwxMC42ODcsMCwxNC44MmwyMzQuNjY3LDIzNC42NjdjNC4xNjUsNC4xNjQsMTAuOTE3LDQuMTY0LDE1LjA4MywwbDIzNC42NjctMjM0LjY2Nw0KCWM0LjIzNy00LjA5Myw0LjM1NC0xMC44NDUsMC4yNjItMTUuMDgzYy00LjA5My00LjIzNy0xMC44NDUtNC4zNTQtMTUuMDgzLTAuMjYyYy0wLjA4OSwwLjA4Ni0wLjE3NiwwLjE3My0wLjI2MiwwLjI2Mg0KCUw0NzIuMzI4LDEyMC41Mjl6Ii8+DQo8cGF0aCBkPSJNMjQ1LjIxMywzNzMuNDE1Yy0yLjgzMSwwLjAwNS01LjU0OC0xLjExNS03LjU1Mi0zLjExNUwyLjk5NCwxMzUuNjMzYy00LjA5My00LjIzNy0zLjk3NS0xMC45OSwwLjI2Mi0xNS4wODMNCgljNC4xMzQtMy45OTIsMTAuNjg3LTMuOTkyLDE0LjgyLDBsMjI3LjEzNiwyMjcuMTE1bDIyNy4xMTUtMjI3LjEzNmM0LjA5My00LjIzNywxMC44NDUtNC4zNTQsMTUuMDgzLTAuMjYyDQoJYzQuMjM3LDQuMDkzLDQuMzU0LDEwLjg0NSwwLjI2MiwxNS4wODNjLTAuMDg2LDAuMDg5LTAuMTczLDAuMTc2LTAuMjYyLDAuMjYyTDI1Mi43NDQsMzcwLjI3OQ0KCUMyNTAuNzQ4LDM3Mi4yODEsMjQ4LjAzOSwzNzMuNDA4LDI0NS4yMTMsMzczLjQxNXoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" width="10" height="10" style="margin-top:7px" />
-                            </div>
-                        </header>
-                        <div class="filter-content collapse" id="collapse_aside4" style="">
-                            <div class="card-body">
-                                <label class="custom-control">
-                                    <input type="checkbox" checked="" class="custom-control-input">
-                                    <div class="custom-control-label">Better </div>
-                                </label> <label class="custom-control">
-                                    <input type="checkbox" checked="" class="custom-control-input">
-                                    <div class="custom-control-label">Best </div>
-                                </label> <label class="custom-control">
-                                    <input type="checkbox" checked="" class="custom-control-input">
-                                    <div class="custom-control-label">Good</div>
-                                </label> <label class="custom-control">
-                                    <input type="checkbox" checked="" class="custom-control-input">
-                                    <div class="custom-control-label">Not good</div>
-                                </label>
-                            </div>
-                        </div>
-                    </article>
+        <div class="row" >
+            <div class="col-3">
+                <div class="titlesUser">
+                    <h3 class="titles-text-user">Categorias</h3>
                 </div>
+                <div class="containeraccordion">
+                    <ul id="accordion" class="accordion" style="cursor:pointer">
+                        <li>
+                            <div class="link" onclick="TodosLosProductos()"><i class="bi bi-list"></i>Todos los productos</div>
+                           
+                        </li>
+                        <li>
+                            <div class="link"><i class="bi bi-cpu"></i>Procesadores<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a class="text-light" onclick="BuscarCategoria(4,1)">AMD</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(4,2)">Intel</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link"><i class="bi bi-play-btn"></i>Placas De Video<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a class="text-light" onclick="BuscarCategoria(3,1)">AMD</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(3,6)">Geforce</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link"><i class="bi bi-display"></i>Monitores<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a class="text-light" onclick="BuscarCategoria(5,7)">Samsung</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(5,4)">Asus</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(5,8)">Lg</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link"><i class="bi bi-keyboard"></i>Teclados<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a class="text-light" onclick="BuscarCategoria(7,9)">Hyperex</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(7,10)">Reddragon</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(7,11)">Razer</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link"><i class="bi bi-mouse3"></i>Mouse<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a class="text-light" onclick="BuscarCategoria(6,9)">Hyperex</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(6,10)">Reddragon</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(6,11)">Razer</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(6,12)">Logitech</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link"><i class="bi bi-headphones"></i>Auriculares<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a class="text-light" onclick="BuscarCategoria(8,9)">Hyperex</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(8,10)">Reddragon</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(8,11)">Razer</a></li>
+                                <li><a class="text-light" onclick="BuscarCategoria(8,12)">Logitech</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
             </div>
-            <div class="col-md-8 " id="text" style="margin:0">
+            <div class="col-md-7 " id="text" style="margin:0">
                 @foreach (var item in Model)
                 {
 
@@ -153,15 +123,15 @@
                             <div class="mr-2 mb-3 mb-lg-0">  <img src="@("/Files/Img/Product/"+item.ImageName)" asp-append-version="true" width="150" height="150" /> </div>
                             <div class="media-body">
                                 <h6 class="media-title font-weight-semibold"><a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a> </h6>
-                                
+
 
                                 <p class="mb-3">@Html.DisplayFor(modelItem => item.Description) </p>
 
                             </div>
                             <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
                                 <h3 class="mb-0 font-weight-semibold">$@Html.DisplayFor(modelItem => item.Price)</h3>
-                               
-                                 <button type="button" class="btn btn-warning mt-4 text-white" onclick="addProduct(@item.Id)"><i class="icon-cart-add mr-2"></i> Agregar al carro</button>
+
+                                <button type="button" class="btn btn-warning mt-4 text-white" onclick="addProduct(@item.Id)"><i class="icon-cart-add mr-2"></i> Agregar al carro</button>
                             </div>
                         </div>
                     </div>
@@ -173,20 +143,29 @@
         </div>
     </div>
 
-</body>
-<script>
-    function addProduct(id) {
 
+
+
+</body>
+
+<script>
+
+    function addProduct(id) {
+        var cantidad = 1;
         $.ajax({
 
             url: "/VentaCabeceras/AddProdCarrito",
-            data: { IdProduct: id },
+            data: {
+                IdProduct: id,
+                cantidad: cantidad
+            },
             type: "post",
             cache: false,
 
             success: function () {
+
                 GetTotalCarrito();
-                
+
             },
             error: function (error) {
 
@@ -197,8 +176,8 @@
     }
 
 
+  
+
 
 
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>

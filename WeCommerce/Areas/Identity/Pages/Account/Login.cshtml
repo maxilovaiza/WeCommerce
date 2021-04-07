@@ -1,6 +1,7 @@
 ﻿@page
 @model LoginModel
 
+
 @{
     ViewData["Title"] = "Log in";
     Layout = null;
@@ -69,7 +70,7 @@
                                     </form>
                                 </section>
                                 <div class="bottom text-center mb-5">
-                                    <p href="#" class="sm-text mx-auto mb-3">No tienes cuenta?<button class="btn btn-white ml-2" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrarse</button></p>
+                                    <p href="#" class="sm-text mx-auto mb-3">No tienes cuenta?<button class="btn btn-white ml-2" ><a class="text-dark" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrarse</a></button></p>
                                 </div>
                             </div>
 

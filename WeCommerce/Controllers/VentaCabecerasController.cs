@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WeCommerce.Data;
-using WeCommerce.Helpers;
 using WeCommerce.Models;
+
+
+
 
 namespace WeCommerce.Controllers
 {
     public class VentaCabecerasController : Controller
     {
+       
         private readonly ApplicationDbContext _context;
 
         public VentaCabecerasController(ApplicationDbContext context)
         {
+            
             _context = context;
         }
-
+       
         // GET: VentaCabeceras
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Index()
         {
             if (User.IsInRole("Admin"))
@@ -51,7 +54,7 @@ namespace WeCommerce.Controllers
             {
                 return NotFound();
             }
-            ventaCabecera.Details = _context.VentasDetalles.Where(vd => vd.VentaCabeceraId == id).ToList();
+            ventaCabecera.Details = _context.VentasDetalles.Where(vd => vd.VentaCabeceraId == id ).ToList();
 
             if (ventaCabecera.Details == null)
                 ventaCabecera.Details = new List<VentaDetalle>();
@@ -88,7 +91,7 @@ namespace WeCommerce.Controllers
                 var ventaDetalle = new VentaDetalle();
                 ventaDetalle.ProductId = item.IdProducts;
                 ventaDetalle.Quntity = item.Cantidad;
-
+                ventaDetalle.Price = item.Price;
                 lstVentaDetalle.Add(ventaDetalle);
             }
 
@@ -108,6 +111,9 @@ namespace WeCommerce.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                    
+
+
+
                     var Usuario = User.Identity.Name;
                     ventaCabecera.IdUser = Usuario;
                     _context.Add(ventaCabecera);
@@ -215,7 +221,7 @@ namespace WeCommerce.Controllers
 
 
         private static List<WeCartTemp> ListProducts;
-        public WeCartTemp AddProdCarrito(int IdProduct)
+        public WeCartTemp AddProdCarrito(int IdProduct,int cantidad)
         {
             if (ListProducts==null)
             {
@@ -224,11 +230,13 @@ namespace WeCommerce.Controllers
             var productInList = ListProducts.Where(p => p.IdProducts == IdProduct).FirstOrDefault();
             if (productInList!=null)
             {
-                productInList.Cantidad++;
+                productInList.Cantidad=productInList.Cantidad + cantidad;
             }
             else
             {
-                productInList = new WeCartTemp() { IdProducts = IdProduct, Cantidad = 1 };
+                var produts = _context.Product.Where(p=> p.Id==IdProduct).FirstOrDefault();
+                productInList = new WeCartTemp() { IdProducts = IdProduct,Cantidad = cantidad,Price=produts.Price};
+
                 ListProducts.Add(productInList);
             }
             productInList.TotalProducto = _context.Product.Where(p=>p.Id==IdProduct).FirstOrDefault().Price*productInList.Cantidad;
@@ -272,6 +280,8 @@ namespace WeCommerce.Controllers
         {
             public int IdProducts { get; set; }
             public int Cantidad { get; set; }
+            public decimal Price { get; set; }
+
 
             public decimal TotalProducto { get; set; }
 

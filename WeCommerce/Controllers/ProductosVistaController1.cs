@@ -21,9 +21,16 @@ namespace WeCommerce.Controllers
 
 
         // GET: ProductosVistaController1
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? category, int?marca)
         {
-            return View(await _context.Product.ToListAsync());
+            if (category == null)
+            {
+                return View(await _context.Product.ToListAsync());
+
+            }
+           
+            return View(await _context.Product.Where(p => p.CategoryId==category && p.MarcaId==marca).ToListAsync());
+            
         }
 
         // GET: ProductosVistaController1/Details/5
