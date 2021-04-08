@@ -27,9 +27,44 @@ namespace WeCommerce.Controllers
         // GET: Products
         [Authorize(Roles ="Admin")]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Index()
+        public  IActionResult Index(int idCategory,int idMarcas,string strFilter)
         {
-            return View(await _context.Product.ToListAsync());
+           
+
+            ViewBag.Categorys = Helpers.Functions.GetCategorys(true);                     
+            ViewBag.Marcas = Helpers.Functions.GetMarca(true);
+            if (idCategory > 0 && idMarcas == 0)
+            {
+                return View(_context.Product.Where(p => p.CategoryId == idCategory).ToList());
+               
+            }
+            else
+            {
+                if (idMarcas > 0 && idCategory == 0)
+                {
+                    return View(_context.Product.Where(p => p.MarcaId == idMarcas).ToList());
+                    
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(strFilter))
+                    {
+
+                        var lstProductFilter = _context.Product.ToList();
+                        lstProductFilter = lstProductFilter.Where(p =>
+                            p.Description.ToLower().Contains(strFilter.ToLower()) ||
+                            p.Title.ToLower().Contains(strFilter.ToLower()
+                            )).ToList();
+                        return View(lstProductFilter);
+                    }
+                    else
+                    {
+                        return View(_context.Product.ToList()); 
+                    }
+                }
+
+            }
+           
         }
 
         // GET: Products/Details/5

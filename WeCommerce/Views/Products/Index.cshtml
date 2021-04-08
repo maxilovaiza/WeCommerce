@@ -5,22 +5,38 @@
     Layout = "_LayoutOtros";
 
 }
-
-
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/filtros.js"></script>
 
 <body>
-    <div class="titles" >
-        <h3 class="titles-text"  >Productos</h3>
+    <div class="titles">
+        <h3 class="titles-text">Productos</h3>
     </div>
-    <div class="btnstil">
-        <button type="button" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> <a asp-action="Create" style="color:white">Agregar Producto</a>
-        </button>
+    <div class="row col-12">
+        <div class="btnstil col-3">
+            <button type="button" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> <a asp-action="Create" style="color:white">Agregar Producto</a>
+            </button>
+        </div>
+        <div class="col-3" style="margin-bottom:10px">
+            <label style="margin-left:10px">Filtrar por Categorias</label>
+            <select  asp-items="ViewBag.Categorys" class="form-control text-dark" data-selector="" id ="CategoryIdCmb" onchange="redirection()"></select>
+        </div>
+        <div class="col-3" style="margin-bottom:10px">
+            <label style="margin-left:10px">Filtrar por Marcas</label>
+            <select  asp-items="ViewBag.Marcas" class="form-control text-dark" id="MarcasIdCmb" data-selector="" onchange="redirection()"></select>
+        </div>
+        <div class="col-3" style="margin-bottom:10px">
+            <label style="margin-left:10px">Buscar</label>
+            <input class="form-control" id="FilterStr" />
+            <input type="button" onclick="redirection()" value="Buscar" class="form-control text-dark" />
+        </div>
     </div>
+   
     
+       
 
-      
-    
+
 
     <table class="table">
         <thead class="table-dark">
@@ -29,11 +45,12 @@
                     @Html.DisplayNameFor(model => model.ImageName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Title)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.Code)
                 </th>
@@ -47,30 +64,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <img src="@("~/files/img/product/"+item.ImageName)" asp-append-version="true" width="50" height="50" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Code)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
+            <tr>
+                <td>
+                    <img src="@("~/files/img/product/"+item.ImageName)" asp-append-version="true" width="50" height="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
 
 
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" style="color:black"><i class="bi bi-pencil"></i></a>
-                        <a asp-action="Details" asp-route-id="@item.Id" style="color:black"><i class="bi bi-card-list"></i></a>
-                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash" style="color:red"></i></a>
-                    </td>
-                </tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" style="color:black"><i class="bi bi-pencil"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" style="color:black"><i class="bi bi-card-list"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash" style="color:red"></i></a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

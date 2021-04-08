@@ -64,7 +64,30 @@ namespace WeCommerce.Controllers
             return View(ventaCabecera);
         }
 
-        
+        public async Task<IActionResult> DetailsComprasUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ventaCabecera = await _context.VentaCabecera
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ventaCabecera == null)
+            {
+                return NotFound();
+            }
+            ventaCabecera.Details = _context.VentasDetalles.Where(vd => vd.VentaCabeceraId == id).ToList();
+
+            if (ventaCabecera.Details == null)
+                ventaCabecera.Details = new List<VentaDetalle>();
+            ViewBag.TotalVentas = ventaCabecera.Details.Sum(p => p.Price * p.Quntity);
+
+
+            return View(ventaCabecera);
+        }
+
+
         // GET: VentaCabeceras/Create
         public IActionResult Create()
         {

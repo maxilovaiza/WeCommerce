@@ -29,7 +29,14 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1" style="font-family:Fredoka One">AdminPanel</span>
+            <div class="row">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+
+                    <span class="fs-4" style="font-family: Bungee Shade;color: darkorange">WeCommerce</span>
+                </a>
+                <span class="navbar-brand mb-0 h1" style="font-family:Fredoka One">AdminPanel</span>
+
+            </div>
             <div class="top_bar_content ml-auto">
                 <partial name="_LoginPartial" />
             </div>
@@ -42,36 +49,38 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px;height:900px">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-
-                    <span class="fs-4" style="font-family: Bungee Shade;color: darkorange">WeCommerce</span>
-                </a>
-                <hr style="height:1px;width:auto;margin-top:5px;margin-bottom:5px;background-color:white">
+            <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px;height:2000px">
+               
+               
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
+                    <li class="nav-item" >
                         <a asp-controller="Products" asp-action="Index" class="nav-link text-white" id="aProductos">
                             <i class="bi bi-laptop"></i><use xlink:href="#home"></use>
                             Productos
                         </a>
+                        <hr style="height:1px;width:200px;margin-top:5px;margin-bottom:5px;background-color:white">
                     </li>
+
                     <li class="nav-item">
                         <a asp-controller="Categories" asp-action="Index" class="nav-link text-white" id="aCategorias">
                             <i class="bi bi-menu-app-fill"></i><use xlink:href="#speedometer2"></use>
                             Categorias
                         </a>
+                        <hr style="height:1px;width:auto;margin-top:5px;margin-bottom:5px;background-color:white">
                     </li>
                     <li class="nav-item">
                         <a asp-controller="VentaCabeceras" asp-action="Index" class="nav-link text-white" id="aVentas">
                             <i class="bi bi-receipt"></i><use xlink:href="#table"></use>
                             Ventas
                         </a>
+                        <hr style="height:1px;width:auto;margin-top:5px;margin-bottom:5px;background-color:white">
                     </li>
                     <li class="nav-item ">
                         <a asp-controller="Marcas" asp-action="Index" class="nav-link text-white " id="aMarcas">
                             <i class="bi bi-tags"></i><use xlink:href="#grid"></use>
                             Marcas
                         </a>
+                        <hr style="height:1px;width:auto;margin-top:5px;margin-bottom:5px;background-color:white">
                     </li>
 
                 </ul>
@@ -132,11 +141,7 @@
 
     }
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Wecommerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
     @RenderSection("Scripts", required: false)
 </body>
 

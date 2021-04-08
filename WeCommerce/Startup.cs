@@ -30,7 +30,13 @@ namespace WeCommerce
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options =>{
+            services.AddMvc()
+                .AddMvcOptions(options =>
+                {
+                    options.MaxModelValidationErrors = 999999;
+                });
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
@@ -47,8 +53,8 @@ namespace WeCommerce
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-           
-          
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

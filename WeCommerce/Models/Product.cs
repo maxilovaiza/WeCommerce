@@ -5,11 +5,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using WeCommerce.Data;
 
 namespace WeCommerce.Models
 {
     public class Product
     {
+        private ApplicationDbContext context;
+      
+      
 
         [Key]
         public int Id { get; set; }
@@ -46,6 +50,22 @@ namespace WeCommerce.Models
         public int MarcaId { get; set; }
 
 
+
+
+       
+        //poner el nombre envez del id
+        //public Category GetCategory()
+        //{
+        //    Category cat;
+
+        //    using (var _context = new ApplicationDbContext())
+        //    {
+        //        cat = _context.Category.Where(c => c.Id == CategoryId).FirstOrDefault();
+
+        //    }
+        //    return cat;
+
+        //}
 
     }
 }

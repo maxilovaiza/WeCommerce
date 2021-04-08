@@ -1,19 +1,40 @@
 ﻿@model WeCommerce.Models.VentaCabecera
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Details";
+
 }
+
 <link href="~/css/Cart.css" rel="stylesheet" />
+
 <link href="~/css/titulos.css" rel="stylesheet" />
-<div class="cart_section" >
+<div class="cart_section">
+   
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
                     <div class="titlesUser">
-                        <h3 class="titles-text-user">Carrito</h3>
+                        <h3 class="titles-text-user">Productos Comprados</h3>
                     </div>
+                    <div class="card">
 
+                        <hr />
+                        <dl class="row" style="margin-left:10px">
+                            <dt class="col-sm-2">
+                                Fecha
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Date)
+                            </dd>
+                            <dt class="col-sm-2">
+                                Usuario
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.IdUser)
+                            </dd>
+                        </dl>
+                    </div>
                     <div class="cart_items">
                         <ul class="cart_list" id="recargar">
                             @foreach (var item in Model.Details)
@@ -38,7 +59,7 @@
                                             <div class="cart_item_title">SubTotal</div>
                                             <div class="cart_item_text">$@(item.Quntity*item.getProductos().Price)</div>
                                         </div>
-                                        <button class="button cart_button_checkout" onclick="EliminarProdCart(@item.ProductId)"><i class="fas fa-trash-alt" style="color:black"></i></button>
+
                                     </div>
                                 </li>
                             }
@@ -49,79 +70,14 @@
                     <div class="order_total">
                         <div class="order_total_content text-md-right">
                             <div class="order_total_title">Orden Total:</div>
-                            <div class="order_total_amount">$<span id="total">0</span></div>
+                            <div class="order_total_amount">$<span id="total"> @ViewBag.TotalVentas</span></div>
                         </div>
                     </div>
-                    <div class="cart_buttons row" style="float:right">
-                        <div><button class="button cart_button_clear" style="color:darkorange"><a class="a " asp-action="Index" asp-controller="ProductosVistaController1" >Seguir Comprando</a> </button></div>
-                        <div><form asp-action="Create"><div asp-validation-summary="ModelOnly" class="text-danger"></div><div class="form-group"><input type="submit" value="Comprar" class="button cart_button_checkout text-dark" /></div></form> </div>
-                    </div>
+
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-@section Scripts{
-    <script>
-
-        $(document).ready(
-            function GetTotal() {
-                $.ajax({
-
-                    url: "/VentaCabeceras/GetTotalImport",
-                    type: "post",
-
-                    cache: false,
-                    success: function (retorno) {
-                        $("#total").html(retorno);
-                        GetTotalCarrito();
-                    },
-                    error: function (error) {
-
-                    }
-
-
-
-
-
-                })
-            });
-
-
-
-
-
-    </script>
-    <script>
-        function EliminarProdCart(idproductodelete) {
-            $.ajax({
-                url: "/VentaCabeceras/DeleteProducto",
-                type: "post",
-                data: { idproducto: idproductodelete },
-                cache: false,
-                success: function () {
-                   
-                   window.location = "/VentaCabeceras/Create";
-                },
-                error: function (error) {
-
-                }
-
-
-
-
-            })
-        };
-
-
-
-
-    </script>
-}
-
-
 

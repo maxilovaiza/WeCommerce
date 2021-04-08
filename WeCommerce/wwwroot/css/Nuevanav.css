@@ -78,9 +78,7 @@ h6 {
     h6::selection {
     }
 
-.form-control {
-    color: #db5246
-}
+
 
 section {
     display: block;
@@ -474,7 +472,7 @@ section {
 .header_search_input {
     display: block;
     position: relative;
-    width: calc((100% - 50px) * 0.601);
+    width: 100%;
     height: 100%;
     line-height: 50px;
     border: none !important;
@@ -649,7 +647,7 @@ select {
     right: 0;
     width: 50px;
     height: 100%;
-    background: #0e8ce4;
+    background: #FFFFFF;
     border: none;
     outline: none;
     cursor: pointer;
@@ -700,7 +698,7 @@ select {
     right: -14px;
     width: 23px;
     height: 23px;
-    background: #0e8ce4;
+    background: #FFFFFF;
     border-radius: 50%;
     text-align: center
 }
@@ -709,7 +707,7 @@ select {
         display: block;
         line-height: 23px;
         font-size: 12px;
-        color: #FFFFFF;
+        color: #000;
         -webkit-transform: translateY(1px);
         -moz-transform: translateY(1px);
         -ms-transform: translateY(1px);

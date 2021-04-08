@@ -4,67 +4,77 @@
     ViewData["Title"] = "IndexUsuario";
 }
 <link href="~/css/Cart.css" rel="stylesheet" />
+<link href="~/css/titulos.css" rel="stylesheet" />
 
 <div class="cart_section">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
-                    <div class="cart_title">Compras realizadas</div>
+                    <div class="titlesUser">
+                        <h3 class="titles-text-user">Compras Realizadas</h3>
+                    </div>
 
                     <div class="cart_items">
                         <ul class="cart_list">
                             @foreach (var item in Model)
                             {
 
-                                <li class="cart_item clearfix">
-                                    <div class="cart_item_image"><img src="https://www.eshopex.com/cl/assets/img/icons/eshopex-compra.png"></div>
+                                <li class="cart_item clearfix" style="border-bottom:1px solid;border-color:grey;margin-top:5px">
+                                    <div class="cart_item_image"><img src="https://static.vecteezy.com/system/resources/previews/000/421/253/non_2x/vector-delivery-truck-icon.jpg"></div>
                                     <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                         <div class="cart_item_name cart_info_col">
                                             <div class="cart_item_title">Fecha</div>
                                             <div class="cart_item_text">@Html.DisplayFor(modelItem => item.Date)</div>
                                         </div>
-                                        
+                                        <div class="cart_item_name cart_info_col">
+                                            <div class="cart_item_title">Usuario</div>
+                                            <div class="cart_item_text">@Html.DisplayFor(modelItem => item.IdUser)</div>
+                                        </div>
+                                        <button class="button cart_button_checkout2"><a class="text-dark" asp-action="DetailsComprasUser" asp-route-id="@item.Id" style="color:black"><i class="bi bi-list-nested" style="color:black"></i> Detalles</a></button>
+
                                     </div>
+
+
                                 </li>
                             }
                         </ul>
                     </div>
 
 
-                   
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 @*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUser)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUser)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdUser)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUser)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
